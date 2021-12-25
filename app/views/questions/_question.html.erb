@@ -1,0 +1,26 @@
+<div id="<%= dom_id question %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Name:</strong>
+    <%= question.name %>
+  </p>
+
+  <% if question.gdrive_video_source? %>
+    <iframe src="<%= question.source_url %>" width="640" height="480" allow="autoplay"> </iframe>
+  <% end %>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Required:</strong>
+    <%= question.required %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Questionnaire:</strong>
+    <%= question.questionnaire_id %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this question", question, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this question', edit_question_path(question), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

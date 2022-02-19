@@ -1,31 +1,31 @@
 class QuestionsController < ApplicationController
   # GET /questions or /questions.json
   def index
-    @questionnaire = Questionnaire.find(params[:questionnaire_id])
+    @questionnaire = Questionnaire.friendly.find(params[:questionnaire_id])
     @questions = @questionnaire.questions.order(position: :asc)
   end
 
   # GET /questions/1 or /questions/1.json
   def show
-    @questionnaire = Questionnaire.find(params[:questionnaire_id])
-    @question = @questionnaire.questions.find(params[:id])
+    @questionnaire = Questionnaire.friendly.find(params[:questionnaire_id])
+    @question = @questionnaire.questions.friendly.find(params[:id])
   end
 
   # GET /questions/new
   def new
-    @questionnaire = Questionnaire.find(params[:questionnaire_id])
+    @questionnaire = Questionnaire.friendly.find(params[:questionnaire_id])
     @question = @questionnaire.questions.new
   end
 
   # GET /questions/1/edit
   def edit
-    @questionnaire = Questionnaire.find(params[:questionnaire_id])
-    @question = @questionnaire.questions.find(params[:id])
+    @questionnaire = Questionnaire.friendly.find(params[:questionnaire_id])
+    @question = @questionnaire.questions.friendly.find(params[:id])
   end
 
   # POST /questions or /questions.json
   def create
-    @questionnaire = Questionnaire.find(params[:questionnaire_id])
+    @questionnaire = Questionnaire.friendly.find(params[:questionnaire_id])
     @question = @questionnaire.questions.new(question_params)
 
     respond_to do |format|
@@ -41,8 +41,8 @@ class QuestionsController < ApplicationController
 
   # PATCH/PUT /questions/1 or /questions/1.json
   def update
-    @questionnaire = Questionnaire.find(params[:questionnaire_id])
-    @question = @questionnaire.questions.find(params[:id])
+    @questionnaire = Questionnaire.friendly.find(params[:questionnaire_id])
+    @question = @questionnaire.questions.friendly.find(params[:id])
 
     respond_to do |format|
       if @question.update(question_params)
@@ -57,8 +57,8 @@ class QuestionsController < ApplicationController
 
   # DELETE /questions/1 or /questions/1.json
   def destroy
-    @questionnaire = Questionnaire.find(params[:questionnaire_id])
-    @question = @questionnaire.questions.find(params[:id])
+    @questionnaire = Questionnaire.friendly.find(params[:questionnaire_id])
+    @question = @questionnaire.questions.friendly.find(params[:id])
 
     @question.destroy
 

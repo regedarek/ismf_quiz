@@ -10,37 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_19_115905) do
+ActiveRecord::Schema.define(version: 2022_02_19_131316) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
 
-  create_table "answers", force: :cascade do |t|
+  create_table "answers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.boolean "correct", default: false, null: false
     t.uuid "question_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
-  create_table "questionnaires", force: :cascade do |t|
+  create_table "questionnaires", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "slug", null: false
+    t.index ["slug"], name: "index_questionnaires_on_slug", unique: true
   end
 
-  create_table "questions", force: :cascade do |t|
+  create_table "questions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.integer "source", null: false
     t.string "source_url"
     t.boolean "required", default: false, null: false
-    t.bigint "questionnaire_id", null: false
+    t.uuid "questionnaire_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "question_type", default: 0, null: false
     t.integer "position"
+    t.string "slug", null: false
     t.index ["questionnaire_id"], name: "index_questions_on_questionnaire_id"
+    t.index ["slug"], name: "index_questions_on_slug", unique: true
   end
 
-  add_foreign_key "questions", "questionnaires"
 end

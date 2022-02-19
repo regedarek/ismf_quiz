@@ -2,7 +2,7 @@
 #
 # Table name: answers
 #
-#  id          :bigint           not null, primary key
+#  id          :uuid             not null, primary key
 #  name        :string           not null
 #  correct     :boolean          default(FALSE), not null
 #  question_id :uuid             not null

@@ -46,6 +46,8 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+gem 'friendly_id', '~> 5.4.0'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
@@ -59,6 +61,7 @@ end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
+  gem 'byebug'
   gem "web-console"
   gem 'annotate', git: 'https://github.com/ctran/annotate_models.git'
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]

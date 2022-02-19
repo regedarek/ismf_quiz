@@ -2,10 +2,11 @@
 #
 # Table name: questionnaires
 #
-#  id         :bigint           not null, primary key
+#  id         :uuid             not null, primary key
 #  name       :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  slug       :string
 #
 require "test_helper"
 

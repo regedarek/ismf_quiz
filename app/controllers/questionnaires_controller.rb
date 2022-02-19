@@ -60,7 +60,7 @@ class QuestionnairesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_questionnaire
-      @questionnaire = Questionnaire.find(params[:id])
+      @questionnaire = Questionnaire.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

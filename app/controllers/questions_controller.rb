@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+  before_action :authenticate_user!
+
   # GET /questions or /questions.json
   def index
     @questionnaire = Questionnaire.friendly.find(params[:questionnaire_id])

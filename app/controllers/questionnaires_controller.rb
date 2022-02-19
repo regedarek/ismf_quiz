@@ -1,4 +1,6 @@
 class QuestionnairesController < ApplicationController
+  before_action :authenticate_user!
+
   before_action :set_questionnaire, only: %i[ show edit update destroy ]
 
   # GET /questionnaires or /questionnaires.json

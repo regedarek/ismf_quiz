@@ -1,10 +1,18 @@
-<div class="w-full">
-  <div class="flex justify-between items-center">
+<header class="bg-white shadow">
+  <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
     <h1 class="font-bold text-4xl">Questions</h1>
-    <%= link_to 'New question', new_question_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
+</header>
 
-  <div id="questions" class="min-w-full">
-    <%= render @questions %>
+<main class="container mx-auto mt-8 px-5 flex">
+  <div class="w-full">
+    <div class="flex justify-between items-center">
+
+      <%= link_to 'New question', new_question_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    </div>
+
+    <div id="questions" class="min-w-full">
+      <%= render @questions %>
+    </div>
   </div>
-</div>
+</main>
